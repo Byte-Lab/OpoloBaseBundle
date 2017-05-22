@@ -1,0 +1,8 @@
+parameters:
+    opolo_group_base.twig.extension.class: OpoloGroup\BaseBundle\DependencyInjection\OpoloGroupBaseTwigExtension
+
+services:
+    opolo_group_base.twig.extension:
+        class: %opolo_group_base.twig.extension.class%
+        tags:
+            - { name: twig.extension }

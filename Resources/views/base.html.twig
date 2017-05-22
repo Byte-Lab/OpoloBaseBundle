@@ -1,0 +1,59 @@
+{% extends 'MopaBootstrapBundle::base_less.html.twig' %}
+
+{% block html_tag %}
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html lang="{{ app.request.locale }}"> <!--<![endif]-->
+{% endblock html_tag %}
+
+{% block head_script %}
+    {# Include jquery in header script or the site will break if there's
+       any jQuery embedded in the DOM. #}
+    {% javascripts
+    '@jquery_js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {# Include the Google Analytics tag in this block if you have one. #}
+    {% block google_analytics_tag %}{% endblock %}
+{% endblock %}
+
+{% block head_bottom %}
+    {# Define the assetic '@current_favicon' asset if you want your
+       favicon to be automatically included. #}
+    {% block favicon %}
+        {% stylesheets '@current_favicon' %}
+        <link rel="shortcut icon" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+
+    {% block metadata %}
+        <meta name="description" content="{% block meta_description %}{% endblock %}" />
+        <meta http-equiv="X-UA-Compatible" content="{% block xua_content %}IE=edge,chrome=1{% endblock %}" />
+    {% endblock %}
+{% endblock head_bottom %}
+
+{% block title %}Opolo Group Base{% endblock %}
+
+{# Remove Mopa's header that goes above content row. #}
+{% block page_header %}{% endblock %}
+
+
+{# Content is where the content of the page goes, and sits inside of a
+   <div class="row"> tag. #}
+{% block content %}{% endblock %}
+
+{# Override footer block to specify footer. Note that this is actually
+   wrapped in a <footer></footer> tag. #}
+{% block footer %}{% endblock %}
+
+{% block foot_script_assetic %}
+    {% javascripts output='js/opolo_base.js' filter='?uglifyjs2'
+    '@bootstrap_js'
+    '@mopa_js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock foot_script_assetic %}

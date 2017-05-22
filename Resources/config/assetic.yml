@@ -1,0 +1,38 @@
+assetic:
+    debug:          "%kernel.debug%"
+    bundles:        [ OpoloBaseBundle, MopaBootstrapBundle ]
+    node: %node_bin_path%
+    node_paths: [%node_modules_path%]
+
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        less:
+            bin: %node_modules_bin_path%/lessc
+            apply_to: "\.less$"
+        uglifyjs2:
+            bin: %node_modules_bin_path%/uglifyjs
+        uglifycss:
+            bin: %node_modules_bin_path%/uglifycss
+            apply_to: "\.css$"
+        autoprefixer:
+            bin: %node_modules_bin_path%/autoprefixer-cli
+            resource: "%kernel.root_dir%/../vendor/netzmacht/assetic-autoprefixer/config/autoprefixer.xml"
+    assets:
+        jquery_js:
+            inputs:
+                - '%kernel.root_dir%/../vendor/components/jquery/jquery.js'
+                - '%kernel.root_dir%/../vendor/components/jqueryui/jquery-ui.js'
+        bootstrap_less:
+            inputs:
+                - '%kernel.root_dir%/../vendor/twbs/bootstrap/less/bootstrap.less'
+        bootstrap_js:
+            inputs:
+                - '%kernel.root_dir%/../vendor/twbs/bootstrap/js/*.js'
+        mopa_js:
+            inputs:
+                - '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+                - '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+        current_favicon:
+            inputs:
+                - '%kernel.root_dir%/../web/favicon.ico'

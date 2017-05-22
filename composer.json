@@ -1,0 +1,58 @@
+{
+    "name": "opolo-group/base-bundle",
+    "version": "0.9.0",
+    "keywords": ["opolo", "group", "base", "bundle"],
+    "description": "Base bundle for use in Opolo Group projects.",
+    "homepage": "http://opologroup.com/",
+    "license": "proprietary",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Opolo Group",
+            "email": "dcvernet@opologroup.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "OpoloGroup\\BaseBundle"
+        }
+    },
+    "autoload-dev": {
+        "files": [
+            "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
+        ]
+    },
+    "require": {
+        "php": ">=7.0.0",
+        "components/jquery": "^3.2",
+        "components/jqueryui": "^1.12",
+        "mopa/bootstrap-bundle": "^3.0",
+        "netzmacht/assetic-autoprefixer": "dev-master",
+        "symfony/assetic-bundle": "^2.8",
+        "symfony/monolog-bundle": "^3.0.2",
+        "symfony/symfony": "2.8.*",
+        "twig/extensions": "^1.4",
+        "twig/twig": "^2.0",
+        "twbs/bootstrap": "^3.3"
+    },
+    "require-dev": {
+        "sensio/generator-bundle": "~3.0",
+        "symfony/phpunit-bridge": "~2.7"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrap"
+        ],
+        "post-update-cmd": [
+            "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrap"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin",
+        "sort-packages": true
+    },
+    "extra": {
+        "symfony-assets-install": "relative",
+        "branch-alias": null
+    }
+}
